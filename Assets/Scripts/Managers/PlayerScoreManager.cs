@@ -36,6 +36,11 @@ public class PlayerScoreManager : MonoBehaviour
         }
     }
 
+    private void UpdateCurrentScore()
+    {
+        // TODO
+    }
+
     private void UpdateHighestScore()
     {
         if (_currentScore > _highestScore)
