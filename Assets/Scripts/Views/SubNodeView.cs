@@ -20,6 +20,8 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     {
         _parentNodes = GetComponentsInParent<NodeViewBase>();
         _realScore = _baseScore * _parentNodes.Length;
+
+        _scoreController?.UpdateScore?.Invoke(_realScore);
     }
 
     public Transform NodeTransform => transform;

@@ -28,6 +28,7 @@ public class SubNodeController : ScriptableObject
 
 public enum SubNodeStatus
 {
+    Free,
     Freezed,
     Shielded
 }
