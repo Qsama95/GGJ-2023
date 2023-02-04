@@ -27,7 +27,7 @@ public class BridgeView : MonoBehaviour
     private void Init()
     {
         // TEST: start with random rotation
-        transform.Rotate(0, 0, Random.Range(-90, 90));
+        transform.Rotate(0, 0, transform.eulerAngles.z + Random.Range(-90, 90));
     }
 
     private void OnDestroy()

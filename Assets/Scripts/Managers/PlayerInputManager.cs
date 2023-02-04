@@ -14,31 +14,28 @@ public class PlayerInputManager : MonoBehaviour
         public void ConstructNewBranch(
             NodeViewBase parentNode)
         {
-            // TEST: create random branches
+            // TODO: assign bridge as child to parent node
             var newBridge = Instantiate(
-                _bridgePrefab, 
-                parentNode.transform.position, 
+                _bridgePrefab,
+                parentNode.transform.position,
                 Quaternion.identity);
             newBridge.transform.parent = parentNode.transform;
             var newBridgeView = newBridge.GetComponent<BridgeView>();
-
-            var newSubNode = Instantiate(
-                _subNodePrefab,
-                newBridgeView.BridgeEndPoint.position,
-                Quaternion.identity);
-            newSubNode.transform.parent = newBridgeView.BridgeEndPoint;
-            var newSubNodeView = newSubNode.GetComponent<SubNodeView>();
-            newSubNodeView.ControllableBridge = newBridgeView;
-
-            // TODO: assign bridge as child to parent node
+            parentNode.SetBridgeAfterThisNode(newBridgeView);
 
             // TODO: assign child node as children to the end point of bridge
-
-            // TODO: assign bridge ref to child node
+            var newSubNode = Instantiate(
+               _subNodePrefab,
+               newBridgeView.BridgeEndPoint.position,
+               Quaternion.identity);
+            newSubNode.transform.parent = newBridgeView.BridgeEndPoint;
+            var newSubNodeView = newSubNode.GetComponent<SubNodeView>();
+            newSubNodeView.SetBridgeBeforeThisNode(newBridgeView);
         }
     }
 
     [SerializeField] private NewBranchManager _newBranchManager;
+    [Space]
     [SerializeField] private LayerMask _subNodeLayer;
     private RaycastHit2D _hit = new RaycastHit2D();
 
@@ -54,6 +51,8 @@ public class PlayerInputManager : MonoBehaviour
     private void Init()
     {
         _rootNode = FindObjectOfType<RootNodeView>();
+        _newBranchManager?.ConstructNewBranch(
+                    _rootNode.transform.GetComponent<NodeViewBase>());
     }
 
     void Update()
@@ -135,7 +134,7 @@ public class PlayerInputManager : MonoBehaviour
             {
                 Debug.Log("generate a new branch");
                 _newBranchManager?.ConstructNewBranch(
-                    _highlightedNode.NodeTransform.GetComponent<SubNodeView>());
+                    _highlightedNode.NodeTransform.GetComponent<NodeViewBase>());
             }
         }       
     }
