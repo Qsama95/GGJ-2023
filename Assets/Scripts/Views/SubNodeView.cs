@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 {
-    [SerializeField] private BridgeView _controllableBridge;
-
-    public BridgeView ControllableBridge { get => _controllableBridge; set => _controllableBridge = value; }
+    [SerializeField] private BridgeView _bridgeBefore;
+    [SerializeField] private BridgeView _bridgeAfter;
 
     public Transform NodeTransform => transform;
 
     public void OnPlayerDragging()
     {
         // TODO: facing towards the mouse
-        _controllableBridge?.FacingTowardsMouse?.Invoke();
+        _bridgeBefore?.FacingTowardsMouse?.Invoke();
     }
 
     public void OnPlayerMouseEnter()
@@ -30,6 +29,17 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     {
         // TODO: do some thing after touch the element
     }
+
+    public override void SetBridgeBeforeThisNode(BridgeView bridge)
+    {
+        _bridgeBefore = bridge;
+    }
+
+    public override void SetBridgeAfterThisNode(BridgeView bridge)
+    {
+        _bridgeAfter = bridge;
+    }
+
 
     // TEST ROTATION
     private void Update()
