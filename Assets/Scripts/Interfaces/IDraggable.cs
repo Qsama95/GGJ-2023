@@ -4,7 +4,8 @@ using UnityEngine;
 
 public interface IDraggable
 {
-    void FollowingMouse(Vector3 mousePos);
+    Transform NodeTransform { get; }
     void OnPlayerMouseEnter();
     void OnPlayerMouseExit();
+    void OnPlayerDragging();
 }

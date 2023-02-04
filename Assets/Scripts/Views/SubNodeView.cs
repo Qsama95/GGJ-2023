@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 {
-    public void FollowingMouse(Vector3 mousePos)
+    [SerializeField] private BridgeView _controllableBridge;
+
+    public BridgeView ControllableBridge { get => _controllableBridge; set => _controllableBridge = value; }
+
+    public Transform NodeTransform => transform;
+
+    public void OnPlayerDragging()
     {
-        // TODO: rotate the node bridge along its end point
+        // TODO: facing towards the mouse
+        _controllableBridge?.FacingTowardsMouse?.Invoke();
     }
 
     public void OnPlayerMouseEnter()
@@ -19,20 +26,14 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
         // TODO: unhighlight the subnode
     }
 
-    public void OnTouchedElement(ElementControllerBase element)
+    public void OnTouchedElement(ElementType element)
     {
         // TODO: do some thing after touch the element
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // TEST ROTATION
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //_controllableBridge?.FacingTowardsMouse?.Invoke();
     }
 }

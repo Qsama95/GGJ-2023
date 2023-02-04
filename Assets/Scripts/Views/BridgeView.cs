@@ -2,31 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
+using Random = UnityEngine.Random;
 
 public class BridgeView : MonoBehaviour
 {
     [SerializeField] private Transform _bridgeStartPoint;
     [SerializeField] private Transform _bridgeEndPoint;
 
-    private Transform _startFromNode;
-    private Transform _endAtNode;
+    public Action FacingTowardsMouse;
 
-    public Transform StartFromNode { get => _startFromNode; set => _startFromNode = value; }
-    public Transform EndAtNode { get => _endAtNode; set => _endAtNode = value; }
+    public Transform BridgeEndPoint { get => _bridgeEndPoint; set => _bridgeEndPoint = value; }
 
-    void Start()
+    private void Awake()
     {
-        
+        RegisterListeners();
     }
+
+    private void Start()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        // TEST: start with random rotation
+        transform.Rotate(0, 0, Random.Range(-90, 90));
+    }
+
+    private void OnDestroy()
+    {
+        UnregisterListeners();
+    }
+
+    private void RegisterListeners()
+    {
+        FacingTowardsMouse += OnFacingTowardsMouse;
+    }
+
+    private void UnregisterListeners()
+    {
+        FacingTowardsMouse -= OnFacingTowardsMouse;
+    }
+
     private void Update()
     {
-        OnRotateTowardMouse();
     }
 
-    private void OnRotateTowardMouse()
+    private void OnFacingTowardsMouse()
     {
-        var targetDir = Input.mousePosition - _bridgeEndPoint.position;
-        var targetAngle = Vector3.SignedAngle(transform.up, targetDir, -transform.forward);
-        transform.RotateAround(_bridgeEndPoint.position, -transform.forward, targetAngle);
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var targetDir = mousePos - _bridgeStartPoint.position;
+        var targetAngle = Vector2.SignedAngle(transform.up, targetDir);
+        transform.Rotate(0, 0, targetAngle);
     }
 }

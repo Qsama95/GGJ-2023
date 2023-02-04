@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IElementInteractable
 {
-    void OnTouchedElement(ElementControllerBase element);
+    void OnTouchedElement(ElementType element);
 }
