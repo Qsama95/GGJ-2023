@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 {
+    [SerializeField] private SubNodeController subNodeController;
     [SerializeField] private BridgeView _bridgeBefore;
     [SerializeField] private BridgeView _bridgeAfter;
 

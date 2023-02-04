@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubNodeController : MonoBehaviour
+[CreateAssetMenu( fileName = "SubNodeController", menuName = "Controllers/SubNodeController")]
+public class SubNodeController : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnTouchedCheckPoint(SubNodeView subNode)
     {
-        
+        // TODO: 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTouchedFreezer(SubNodeView subNode)
     {
-        
+        // TODO: 
     }
+
+    public void OnTouchedSplitter(SubNodeView subNode)
+    {
+        // TODO: 
+    }
+
+    public void OnTouchedDevouere(SubNodeView subNode)
+    {
+        // TODO: 
+    }
+}
+
+public enum SubNodeStatus
+{
+    Freezed,
+    Shielded
 }

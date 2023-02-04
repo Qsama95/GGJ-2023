@@ -35,6 +35,7 @@ public class PlayerInputManager : MonoBehaviour
     }
 
     [SerializeField] private NewBranchManager _newBranchManager;
+    [Space]
     [SerializeField] private LayerMask _subNodeLayer;
     private RaycastHit2D _hit = new RaycastHit2D();
 
@@ -50,6 +51,8 @@ public class PlayerInputManager : MonoBehaviour
     private void Init()
     {
         _rootNode = FindObjectOfType<RootNodeView>();
+        _newBranchManager?.ConstructNewBranch(
+                    _rootNode.transform.GetComponent<NodeViewBase>());
     }
 
     void Update()
@@ -131,7 +134,7 @@ public class PlayerInputManager : MonoBehaviour
             {
                 Debug.Log("generate a new branch");
                 _newBranchManager?.ConstructNewBranch(
-                    _highlightedNode.NodeTransform.GetComponent<SubNodeView>());
+                    _highlightedNode.NodeTransform.GetComponent<NodeViewBase>());
             }
         }       
     }
