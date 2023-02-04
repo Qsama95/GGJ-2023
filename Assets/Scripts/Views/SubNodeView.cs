@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 {
+    [Header("Node Management")]
     [SerializeField] private SubNodeController subNodeController;
     [SerializeField] private BridgeView _bridgeBefore;
     [SerializeField] private BridgeView _bridgeAfter;
+
+    [Header("Score Management")]
+    [SerializeField] private PlayerScoreController _scoreController;
+    [SerializeField] private int _baseScore;
+    [SerializeField] private int _realScore;
+
+    NodeViewBase[] _parentNodes;
+
+    private void Start()
+    {
+        _parentNodes = GetComponentsInParent<NodeViewBase>();
+        _realScore = _baseScore * _parentNodes.Length;
+    }
 
     public Transform NodeTransform => transform;
 
