@@ -3,23 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubNodeDraggingManager : MonoBehaviour
+public class PlayerInputManager : MonoBehaviour
 {
     [SerializeField] private LayerMask _subNodeLayer;
     private RaycastHit2D _hit = new RaycastHit2D();
 
+    private RootNodeView _rootNode;
     private SubNodeView _selectedNode;
     private SubNodeView _highlightedNode;
 
     void Start()
     {
-        
+        _rootNode = FindObjectOfType<RootNodeView>();
     }
 
     void Update()
     {
+        DetectRotationInput();
         DetectSubNode();
         DetectSelectSubNode();
+    }
+
+    private void DetectRotationInput()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            // rotate root node counter clockwise
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            // rotate root node clockwise
+        }
     }
 
     private void DetectSubNode()

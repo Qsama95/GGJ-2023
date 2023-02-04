@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BridgeView : MonoBehaviour
 {
@@ -17,10 +18,15 @@ public class BridgeView : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        OnRotateTowardMouse();
+    }
+
+    private void OnRotateTowardMouse()
+    {
+        var targetDir = Input.mousePosition - _bridgeEndPoint.position;
+        var targetAngle = Vector3.SignedAngle(transform.up, targetDir, -transform.forward);
+        transform.RotateAround(_bridgeEndPoint.position, -transform.forward, targetAngle);
     }
 }

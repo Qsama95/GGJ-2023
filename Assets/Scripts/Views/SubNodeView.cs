@@ -21,7 +21,7 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 
     public void OnTouchedElement(ElementControllerBase element)
     {
-
+        // TODO: do some thing after touch the element
     }
 
     // Start is called before the first frame update
