@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 8054815235610976209}
   - component: {fileID: 8054815235610976208}
   - component: {fileID: 6467929076894031301}
+  - component: {fileID: 8237610905840691677}
   m_Layer: 6
   m_Name: SubNodeSprite
   m_TagString: Untagged
@@ -164,3 +165,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 0
   eraseRenderer: 0
+--- !u!114 &8237610905840691677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054815235610976210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 4c8078a2394e71343a9c42fa63940264, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
