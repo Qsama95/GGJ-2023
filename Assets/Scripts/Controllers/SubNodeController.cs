@@ -54,14 +54,20 @@ public class SubNodeController : ScriptableObject
         switch (subNode.SubNodeStatus)
         {
             case SubNodeStatus.Free:
-
+                foreach (SubNodeView subNodeView in subNode.ParentNodes)
+                {
+                    subNodeView.SubNodeStatus = SubNodeStatus.Saved;
+                }
                 break;
+
             case SubNodeStatus.Saved:
 
                 break;
+
             case SubNodeStatus.Freezed:
 
                 break;
+
             case SubNodeStatus.Shielded:
 
                 break;

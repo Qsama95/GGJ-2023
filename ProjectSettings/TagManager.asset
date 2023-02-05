@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PlayGround
+    uniqueID: 4167433917
+    locked: 0
+  - name: RootComponent
+    uniqueID: 43079363
+    locked: 0
+  - name: Element
+    uniqueID: 1160016225
+    locked: 0
