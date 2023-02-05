@@ -23,8 +23,12 @@ public class ElementViewBase : MonoBehaviour
 public enum ElementType
 {
     Nothing,
+    CheckPoint,
     Cutter,
-    Grower,
-    Shielder,
-    Freezer
+    Splitter,
+    Shield,
+    Freezer,
+    Rewinder,
+    Sprouter,
+    Devouerer
 }
