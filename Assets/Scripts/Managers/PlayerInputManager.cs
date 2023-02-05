@@ -33,7 +33,7 @@ public class PlayerInputManager : MonoBehaviour
         DetectRotationInput();
         DetectSubNode();
         DetectSelectSubNode();
-        _rootNode.transform.Rotate(RotationDirection, 45*Time.deltaTime);
+        //_rootNode.transform.Rotate(RotationDirection, 15*Time.deltaTime);
     }
 
     private void DetectRotationInput()

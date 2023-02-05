@@ -36,6 +36,8 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     public void OnPlayerDragging()
     {
         // TODO: facing towards the mouse
+        if (SubNodeStatus == SubNodeStatus.Freezed) return;
+
         _bridgeBefore?.FacingTowardsMouse?.Invoke();
     }
 

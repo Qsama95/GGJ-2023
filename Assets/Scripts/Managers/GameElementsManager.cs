@@ -59,7 +59,7 @@ public class GameElementsManager : MonoBehaviour
         _elementSpawner = new GameElementsSpawner();
 
         Init();
-        InvokeRepeating(nameof(SpawnElementRandomly), 3, Random.Range(0.5f, 3));
+        InvokeRepeating(nameof(SpawnElementRandomly), 3, Random.Range(0.5f, 1));
     }
 
     private void Init()
