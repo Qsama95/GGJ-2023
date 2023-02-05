@@ -43,6 +43,9 @@ public class PlayerInputManager : MonoBehaviour
     private IDraggable _selectedNode;
     private IDraggable _highlightedNode;
 
+    public int intRotationSpeed;
+    private Vector3 RotationDirection = Vector3.forward;
+
     void Start()
     {
         Init();
@@ -60,6 +63,7 @@ public class PlayerInputManager : MonoBehaviour
         DetectRotationInput();
         DetectSubNode();
         DetectSelectSubNode();
+        _rootNode.transform.Rotate(RotationDirection, intRotationSpeed * Time.deltaTime);
     }
 
     private void DetectRotationInput()
@@ -67,10 +71,12 @@ public class PlayerInputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             // rotate root node counter clockwise
+            RotationDirection = Vector3.forward;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             // rotate root node clockwise
+            RotationDirection = Vector3.back;
         }
     }
 
@@ -83,6 +89,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             Debug.Log($"hit on subnode: {_hit.transform.GetComponent<IDraggable>()}");
             // TODO: call mouse enter method on the subnode
+            _hit.transform.GetComponent<IDraggable>().OnPlayerMouseEnter();
             // TODO: assign highlighted node in this manager
             if (_selectedNode != null) return;
             _highlightedNode = _hit.transform.GetComponent<IDraggable>();
@@ -91,6 +98,8 @@ public class PlayerInputManager : MonoBehaviour
         {
             Debug.Log("did not hit on subnode");
             // TODO: call mouse exit method on the subnode
+            if (_highlightedNode == null) return;
+                       _highlightedNode.OnPlayerMouseExit();
             // TODO: remove highlighted node in this manager
             _highlightedNode = null;
         }

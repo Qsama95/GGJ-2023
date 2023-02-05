@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
 {
@@ -33,11 +34,25 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     public void OnPlayerMouseEnter()
     {
         // TODO: highlight the subnode
+        GameObject _sprite;
+        _sprite = NodeTransform.Find("SubNodeSprite").gameObject;
+        _sprite.GetComponent<cakeslice.Outline>().enabled = true;
+
+        //Enable lighting
+        //Bloom bloomLayer;
+        //PostProcessVolume volume = _sprite.GetComponent<PostProcessVolume>();
+        //volume.profile.TryGetSettings(out bloomLayer);
+        //Debug.Log(bloomLayer.enabled.value);
+        //bloomLayer.enabled.value = true;
+        //Debug.Log(bloomLayer.enabled.value);
     }
 
     public void OnPlayerMouseExit()
     {
         // TODO: unhighlight the subnode
+        GameObject _sprite;
+        _sprite = NodeTransform.Find("SubNodeSprite").gameObject;
+        _sprite.GetComponent<cakeslice.Outline>().enabled = false;
     }
 
     public void OnTouchedElement(ElementType element)

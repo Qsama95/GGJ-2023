@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8252110eddb07094fb19340eb8d35294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controllableBridge: {fileID: 0}
+  subNodeController: {fileID: 0}
+  _bridgeBefore: {fileID: 0}
+  _bridgeAfter: {fileID: 0}
+  _scoreController: {fileID: 0}
+  _baseScore: 0
+  _realScore: 0
 --- !u!58 &8054815235118036897
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -72,6 +77,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8054815235610976209}
   - component: {fileID: 8054815235610976208}
+  - component: {fileID: 7394659990309145827}
+  - component: {fileID: 3830936638056733493}
   m_Layer: 6
   m_Name: SubNodeSprite
   m_TagString: Untagged
@@ -144,3 +151,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7394659990309145827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054815235610976210}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+--- !u!114 &3830936638056733493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054815235610976210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 3300a7370a0e8ee45875d9aa7db3f4da, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
