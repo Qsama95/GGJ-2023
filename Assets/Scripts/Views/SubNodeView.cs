@@ -43,11 +43,17 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     public void OnPlayerMouseEnter()
     {
         // TODO: highlight the subnode
+        GameObject _sprite;
+        _sprite = NodeTransform.Find("SubNodeSprite").gameObject;
+        _sprite.GetComponent<cakeslice.Outline>().enabled = true;
     }
 
     public void OnPlayerMouseExit()
     {
         // TODO: unhighlight the subnode
+        GameObject _sprite;
+        _sprite = NodeTransform.Find("SubNodeSprite").gameObject;
+        _sprite.GetComponent<cakeslice.Outline>().enabled = false;
     }
 
     public void OnTouchedElement(ElementType element)
