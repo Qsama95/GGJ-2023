@@ -57,7 +57,7 @@ public class PlayerScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(_highestScoreKey, 0);
         }
-        ClearHighestScore();
+        //ClearHighestScore();
     }
 
     private void UpdateCurrentScore(int scoreToAdd)
