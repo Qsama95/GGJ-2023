@@ -7,8 +7,15 @@ public class GameUIManager : MonoBehaviour
 {
     [SerializeField] private List<UICanvasView> _uiCanvasGroups;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameUIController _gameUIController;
+    [SerializeField] private UIType _activeUIType;
+
+    private void Awake()
+    {
+        RegisterListeners();
+    }
+
+    private void Start()
     {
         Init();
     }
@@ -16,19 +23,40 @@ public class GameUIManager : MonoBehaviour
     private void Init()
     {
         _uiCanvasGroups = new List<UICanvasView>(FindObjectsOfType<UICanvasView>());
+        _gameUIController.SwitchUIType?.Invoke(UIType.InGame);
     }
 
-    private void SwitchUI(UIState state)
+    private void OnDestroy()
     {
-        // TODO
+        UnregisterListeners();
     }
-}
 
-public enum UIState
-{
-    InGame,
-    Pause,
-    End
+    private void RegisterListeners()
+    {
+        _gameUIController.SwitchUIType += SwitchUI;
+    }
+
+    private void UnregisterListeners()
+    {
+        _gameUIController.SwitchUIType -= SwitchUI;
+    }
+
+    private void SwitchUI(UIType activeUIType)
+    {
+        _activeUIType = activeUIType;
+        // TODO
+        foreach (UICanvasView uICanvasView in _uiCanvasGroups)
+        {
+            if (uICanvasView.UiType == activeUIType)
+            {
+                uICanvasView.FadeUI?.Invoke(true);
+            }
+            else
+            {
+                uICanvasView.FadeUI?.Invoke(false);
+            }
+        }
+    }
 }
 
 public enum UIType

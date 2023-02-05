@@ -5,36 +5,7 @@ using UnityEngine;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    [Serializable]
-    public class NewBranchManager
-    {
-        public GameObject _bridgePrefab;
-        public GameObject _subNodePrefab;
-
-        public void ConstructNewBranch(
-            NodeViewBase parentNode)
-        {
-            // TODO: assign bridge as child to parent node
-            var newBridge = Instantiate(
-                _bridgePrefab,
-                parentNode.transform.position,
-                Quaternion.identity);
-            newBridge.transform.parent = parentNode.transform;
-            var newBridgeView = newBridge.GetComponent<BridgeView>();
-            parentNode.SetBridgeAfterThisNode(newBridgeView);
-
-            // TODO: assign child node as children to the end point of bridge
-            var newSubNode = Instantiate(
-               _subNodePrefab,
-               newBridgeView.BridgeEndPoint.position,
-               Quaternion.identity);
-            newSubNode.transform.parent = newBridgeView.BridgeEndPoint;
-            var newSubNodeView = newSubNode.GetComponent<SubNodeView>();
-            newSubNodeView.SetBridgeBeforeThisNode(newBridgeView);
-        }
-    }
-
-    [SerializeField] private NewBranchManager _newBranchManager;
+    [SerializeField] private BranchGenerationController _branchGenerationController;
     [Space]
     [SerializeField] private LayerMask _subNodeLayer;
     private RaycastHit2D _hit = new RaycastHit2D();
@@ -51,7 +22,7 @@ public class PlayerInputManager : MonoBehaviour
     private void Init()
     {
         _rootNode = FindObjectOfType<RootNodeView>();
-        _newBranchManager?.ConstructNewBranch(
+        _branchGenerationController?.ConstructNewBranch(
                     _rootNode.transform.GetComponent<NodeViewBase>());
     }
 
@@ -81,19 +52,21 @@ public class PlayerInputManager : MonoBehaviour
         _hit = Physics2D.GetRayIntersection(ray, _subNodeLayer);
         if (_hit)
         {
-            Debug.Log($"hit on subnode: {_hit.transform.GetComponent<IDraggable>()}");
+            Debug.Log($"hit on subnode: " +
+                $"{_hit.transform.GetComponent<IDraggable>()}");
             // TODO: call mouse enter method on the subnode
             // TODO: assign highlighted node in this manager
             if (_selectedNode != null) return;
             _highlightedNode = _hit.transform.GetComponent<IDraggable>();
-            _highlightedNode.OnPlayerMouseEnter();
+            _highlightedNode?.OnPlayerMouseEnter();
         }
         else
         {
             Debug.Log("did not hit on subnode");
             // TODO: call mouse exit method on the subnode
             // TODO: remove highlighted node in this manager
-            _highlightedNode.OnPlayerMouseExit();
+            if (_highlightedNode == null) return;
+            _highlightedNode?.OnPlayerMouseExit();
             _highlightedNode = null;
         }
     }
@@ -116,7 +89,7 @@ public class PlayerInputManager : MonoBehaviour
             if (_selectedNode != null)
             {
                 Debug.Log("dragging the selected node");
-                _selectedNode.OnPlayerDragging();
+                _selectedNode?.OnPlayerDragging();
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -135,7 +108,7 @@ public class PlayerInputManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("generate a new branch");
-                _newBranchManager?.ConstructNewBranch(
+                _branchGenerationController?.ConstructNewBranch(
                     _highlightedNode.NodeTransform.GetComponent<NodeViewBase>());
             }
         }       

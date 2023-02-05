@@ -24,6 +24,11 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
         _scoreController?.UpdateScore?.Invoke(_realScore);
     }
 
+    private void OnDestroy()
+    {
+        _scoreController?.UpdateScore?.Invoke(-_realScore);
+    }
+
     public Transform NodeTransform => transform;
 
     public void OnPlayerDragging()

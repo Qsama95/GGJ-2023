@@ -49,7 +49,7 @@ MonoBehaviour:
   _bridgeBefore: {fileID: 0}
   _bridgeAfter: {fileID: 0}
   _scoreController: {fileID: 11400000, guid: 82d58ebf5c3a5454a863cb114da04dc0, type: 2}
-  _baseScore: 0
+  _baseScore: 1
   _realScore: 0
 --- !u!58 &8054815235118036897
 CircleCollider2D:
