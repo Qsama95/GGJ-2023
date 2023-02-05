@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4965167760479031933
+--- !u!1001 &3788184368232053893
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3476487648526166578, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: _elementType
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648526166579, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_RootOrder
@@ -57,31 +57,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648526166580, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Name
-      value: ShielderView
+      value: CheckPointView
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b3972b2ebac87bc4a8430bae8ac48245, type: 3}
+      objectReference: {fileID: 21300000, guid: 6762ba4654fa5a14eb3fec567218c77c, type: 3}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.25157225
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Color.g
-      value: 0.98121786
+      value: 0.9281497
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -97,11 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696783, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.107
+      value: 0.289
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648730696783, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.016
+      value: -0.023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3476487648526166578, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: _elementType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3476487648526166579, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
       propertyPath: m_RootOrder
@@ -59,5 +59,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreererView
       objectReference: {fileID: 0}
+    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1dd0e5a9ca2905f409081e6b1ebcbbb7, type: 3}
+    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7699003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476487648730696782, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1908b3deb9cc8454a955ccf863d888bb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2444563ef2e95064a9f0c01cf58bab8a, type: 3}

@@ -61,6 +61,7 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     {
         // TODO: do some thing after touch the element
         subNodeController.OnTouchedElement(this, element);
+        Debug.Log($"touched on element: {element}");
     }
 
     public override void SetBridgeBeforeThisNode(BridgeView bridge)

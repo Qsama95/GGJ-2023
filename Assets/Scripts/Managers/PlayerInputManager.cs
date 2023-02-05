@@ -57,10 +57,9 @@ public class PlayerInputManager : MonoBehaviour
         _hit = Physics2D.GetRayIntersection(ray, _subNodeLayer);
         if (_hit)
         {
-            Debug.Log($"hit on subnode: " +
-                $"{_hit.transform.GetComponent<IDraggable>()}");
+            //Debug.Log($"hit on subnode: " +
+                //$"{_hit.transform.GetComponent<IDraggable>()}");
             // TODO: call mouse enter method on the subnode
-            _hit.transform.GetComponent<IDraggable>().OnPlayerMouseEnter();
             // TODO: assign highlighted node in this manager
             if (_selectedNode != null) return;
             _highlightedNode = _hit.transform.GetComponent<IDraggable>();
@@ -68,7 +67,7 @@ public class PlayerInputManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("did not hit on subnode");
+            //Debug.Log("did not hit on subnode");
             // TODO: call mouse exit method on the subnode
             // TODO: remove highlighted node in this manager
             if (_highlightedNode == null) return;
@@ -94,7 +93,7 @@ public class PlayerInputManager : MonoBehaviour
             // TODO: if there is a highlighted node, select the highlighted node
             if (_selectedNode != null)
             {
-                Debug.Log("dragging the selected node");
+                //Debug.Log("dragging the selected node");
                 _selectedNode?.OnPlayerDragging();
             }
         }

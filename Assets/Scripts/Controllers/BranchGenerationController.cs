@@ -28,5 +28,7 @@ public class BranchGenerationController : ScriptableObject
         newSubNode.transform.parent = newBridgeView.BridgeEndPoint;
         var newSubNodeView = newSubNode.GetComponent<SubNodeView>();
         newSubNodeView.SetBridgeBeforeThisNode(newBridgeView);
+
+        Debug.Log("generated new branch");
     }
 }
