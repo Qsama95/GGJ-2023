@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ElementViewBase : MonoBehaviour
 {
     [SerializeField] private ElementType _elementType;
 
+    private Vector3 _moveDir;
     private Collider2D _collider;
     private Rigidbody2D _rigidbody;
+
+    public Vector3 MoveDir { get => _moveDir; set => _moveDir = value; }
 
     private void Awake()
     {
@@ -19,6 +23,14 @@ public class ElementViewBase : MonoBehaviour
     {
         _collider.enabled = true;
         _rigidbody.simulated = true;
+    }
+
+    private void OnEnable()
+    {
+        _collider.enabled = true;
+        _rigidbody.simulated = true;
+
+        Invoke(nameof(DisableItSelf), Random.Range(5, 8));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -35,11 +47,18 @@ public class ElementViewBase : MonoBehaviour
     {
         _collider.enabled = false;
         _rigidbody.simulated = false;
+        gameObject.SetActive(false);
+    }
+
+    private void DisableItSelf()
+    {
+
     }
 
     private void Update()
     {
         // TODO: move around in the playground
+        transform.DOMove(transform.position + _moveDir * Time.deltaTime, 0.1f);
     }
 }
 public enum ElementType

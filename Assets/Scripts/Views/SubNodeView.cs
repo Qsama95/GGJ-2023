@@ -15,9 +15,7 @@ public class SubNodeView : NodeViewBase, IDraggable, IElementInteractable
     [SerializeField] private int _baseScore;
     [SerializeField] private int _realScore;
 
-    private SubNodeStatus _subNodeStatus;
     private NodeViewBase[] _parentNodes;
-    public SubNodeStatus SubNodeStatus { get => _subNodeStatus; set => _subNodeStatus = value; }
     public NodeViewBase[] ParentNodes { get => _parentNodes; set => _parentNodes = value; }
 
     private void Start()

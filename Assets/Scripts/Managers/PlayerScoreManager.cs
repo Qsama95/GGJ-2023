@@ -73,7 +73,7 @@ public class PlayerScoreManager : MonoBehaviour
         if (_currentScore > _highestScore)
         {
             _highestScore = _currentScore;
-            _highestScoreTMP.text = _highestScore.ToString();
+            _highestScoreTMP.text = _currentScore.ToString();
             PlayerPrefs.SetInt(_highestScoreKey, _highestScore);
         }
     }
