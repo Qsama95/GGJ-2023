@@ -30,7 +30,7 @@ public class ElementViewBase : MonoBehaviour
         _collider.enabled = true;
         _rigidbody.simulated = true;
 
-        Invoke(nameof(DisableItSelf), Random.Range(3, 5));
+        Invoke(nameof(DisableItSelf), Random.Range(5, 8));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
