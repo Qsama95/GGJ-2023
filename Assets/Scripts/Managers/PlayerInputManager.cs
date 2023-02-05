@@ -60,6 +60,7 @@ public class PlayerInputManager : MonoBehaviour
             Debug.Log($"hit on subnode: " +
                 $"{_hit.transform.GetComponent<IDraggable>()}");
             // TODO: call mouse enter method on the subnode
+            _hit.transform.GetComponent<IDraggable>().OnPlayerMouseEnter();
             // TODO: assign highlighted node in this manager
             if (_selectedNode != null) return;
             _highlightedNode = _hit.transform.GetComponent<IDraggable>();
