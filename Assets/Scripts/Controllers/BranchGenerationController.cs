@@ -15,7 +15,7 @@ public class BranchGenerationController : ScriptableObject
         var newBridge = Instantiate(
             _bridgePrefab,
             parentNode.transform.position,
-            Quaternion.identity);
+            parentNode.transform.rotation);
         newBridge.transform.parent = parentNode.transform;
         var newBridgeView = newBridge.GetComponent<BridgeView>();
         parentNode.SetBridgeAfterThisNode(newBridgeView);

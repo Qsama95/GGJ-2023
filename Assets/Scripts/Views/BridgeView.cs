@@ -14,6 +14,8 @@ public class BridgeView : MonoBehaviour
 
     public Transform BridgeEndPoint { get => _bridgeEndPoint; set => _bridgeEndPoint = value; }
 
+    private Vector3 _initialScale;
+
     private void Awake()
     {
         RegisterListeners();
@@ -27,7 +29,13 @@ public class BridgeView : MonoBehaviour
     private void Init()
     {
         // TEST: start with random rotation
-        transform.Rotate(0, 0, transform.eulerAngles.z + Random.Range(-90, 90));
+        var growDir = (_bridgeEndPoint.position - Vector3.zero).normalized;
+        var randomVecFactor = Random.onUnitSphere;
+        randomVecFactor.z = 0;
+        RotateTowardsDirection(growDir + randomVecFactor);
+        
+        _initialScale = transform.localScale;
+        GrowUp();
     }
 
     private void OnDestroy()
@@ -49,11 +57,22 @@ public class BridgeView : MonoBehaviour
     {
     }
 
+    private void GrowUp()
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(_initialScale, 0.5f);
+    }
+
+    private void RotateTowardsDirection(Vector3 targetDir)
+    {
+        var targetAngle = Vector2.SignedAngle(transform.up, targetDir);
+        transform.Rotate(0, 0, targetAngle);
+    }
+
     private void OnFacingTowardsMouse()
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var targetDir = mousePos - _bridgeStartPoint.position;
-        var targetAngle = Vector2.SignedAngle(transform.up, targetDir);
-        transform.Rotate(0, 0, targetAngle);
+        RotateTowardsDirection(targetDir);
     }
 }
