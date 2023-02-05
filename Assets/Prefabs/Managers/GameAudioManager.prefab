@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioController: {fileID: 11400000, guid: 751c1af757fe35b43ba5cc6e96ae642d, type: 2}
-  _audioSourcePrefab: {fileID: 4491639544897367839}
+  _audioSourcePrefab: {fileID: 3534390593550682175, guid: 2b13e45f1f005c04483e0fa3b9f3c599, type: 3}

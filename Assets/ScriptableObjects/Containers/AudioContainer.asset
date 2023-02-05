@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: AudioContainer
   m_EditorClassIdentifier: 
   _audioIdResourcePairs:
-  - ID: 
-    AudioSource: {fileID: 0}
-  - ID: 
-    AudioSource: {fileID: 0}
+  - ID: touch splitter
+    AudioClip: {fileID: 8300000, guid: 818bb2ebdbbaf9f4e8573c22e1cf5380, type: 3}

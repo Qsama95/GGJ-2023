@@ -6,6 +6,7 @@ using UnityEngine;
 public class SubNodeController : ScriptableObject
 {
     [SerializeField] private BranchGenerationController _branchGenerationController;
+    [SerializeField] private GameAudioController _gameAudioController;
 
     public void OnTouchedElement(
         SubNodeView subNode,
@@ -97,6 +98,7 @@ public class SubNodeController : ScriptableObject
             case SubNodeStatus.Free:
                 _branchGenerationController.ConstructNewBranch(subNode);
                 _branchGenerationController.ConstructNewBranch(subNode);
+                _gameAudioController.PlayAudio?.Invoke("touch splitter");
 
                 break;
             case SubNodeStatus.Saved:
@@ -108,6 +110,7 @@ public class SubNodeController : ScriptableObject
             case SubNodeStatus.Shielded:
                 _branchGenerationController.ConstructNewBranch(subNode);
                 _branchGenerationController.ConstructNewBranch(subNode);
+                _gameAudioController.PlayAudio?.Invoke("touch splitter");
 
                 break;
         }

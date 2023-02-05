@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SubNodeController
   m_EditorClassIdentifier: 
   _branchGenerationController: {fileID: 11400000, guid: 0a1a4f42bc09add46bc650ff4d420e04, type: 2}
+  _gameAudioController: {fileID: 11400000, guid: 751c1af757fe35b43ba5cc6e96ae642d, type: 2}
