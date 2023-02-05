@@ -22,6 +22,9 @@ public class ElementViewBase : MonoBehaviour
 }
 public enum ElementType
 {
+    Nothing,
     Cutter,
-    Grower
+    Grower,
+    Shielder,
+    Freezer
 }

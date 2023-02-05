@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerScoreManager : MonoBehaviour
 {
+    [SerializeField] private PlayerScoreController _scoreController;
     [SerializeField] private string _highestScoreKey;
 
     private int _highestScore;
@@ -14,12 +15,27 @@ public class PlayerScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        RegisterListeners();
     }
 
     private void Start()
     {
         Init();
+    }
+
+    private void OnDestroy()
+    {
+        UnregisterListeners();
+    }
+
+    private void RegisterListeners()
+    {
+        _scoreController.UpdateScore += UpdateCurrentScore;
+    }
+
+    private void UnregisterListeners()
+    {
+        _scoreController.UpdateScore -= UpdateCurrentScore;
     }
 
     private void Init()
@@ -36,9 +52,10 @@ public class PlayerScoreManager : MonoBehaviour
         }
     }
 
-    private void UpdateCurrentScore()
+    private void UpdateCurrentScore(int scoreToAdd)
     {
         // TODO
+        _currentScore += scoreToAdd;
     }
 
     private void UpdateHighestScore()

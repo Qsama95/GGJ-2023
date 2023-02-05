@@ -86,12 +86,14 @@ public class PlayerInputManager : MonoBehaviour
             // TODO: assign highlighted node in this manager
             if (_selectedNode != null) return;
             _highlightedNode = _hit.transform.GetComponent<IDraggable>();
+            _highlightedNode.OnPlayerMouseEnter();
         }
         else
         {
             Debug.Log("did not hit on subnode");
             // TODO: call mouse exit method on the subnode
             // TODO: remove highlighted node in this manager
+            _highlightedNode.OnPlayerMouseExit();
             _highlightedNode = null;
         }
     }
