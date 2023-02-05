@@ -14,6 +14,9 @@ public class PlayerInputManager : MonoBehaviour
     private IDraggable _selectedNode;
     private IDraggable _highlightedNode;
 
+    public int intRotationSpeed;
+    private Vector3 RotationDirection = Vector3.forward;
+
     void Start()
     {
         Init();
@@ -31,6 +34,7 @@ public class PlayerInputManager : MonoBehaviour
         DetectRotationInput();
         DetectSubNode();
         DetectSelectSubNode();
+        _rootNode.transform.Rotate(RotationDirection, intRotationSpeed * Time.deltaTime);
     }
 
     private void DetectRotationInput()
@@ -38,10 +42,12 @@ public class PlayerInputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             // rotate root node counter clockwise
+            RotationDirection = Vector3.forward;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             // rotate root node clockwise
+            RotationDirection = Vector3.back;
         }
     }
 
